@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
 import { Animais } from '../animais';
@@ -11,9 +12,9 @@ import { AnimaisService } from '../animais.service';
 })
 export class ListaAnimaisComponent implements OnInit {
 
-  animais$ !: Observable<Animais>;
+  animais!: Animais;
 
-  constructor(private usuarioService: UsuarioService, private animaisService: AnimaisService) { }
+  constructor(private acRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     // this.usuarioService.retornaUsuario().subscribe(usuario => {
@@ -24,12 +25,16 @@ export class ListaAnimaisComponent implements OnInit {
     //   });
     // });
 
-    this.animais$ = this.usuarioService.retornaUsuario().pipe(
-      switchMap((usuario => {
-        const userName = usuario.name ?? '';
-        return this.animaisService.listaDoUsuario(userName);
-      }))
-    );
+    // this.animais$ = this.usuarioService.retornaUsuario().pipe(
+    //   switchMap((usuario => {
+    //     const userName = usuario.name ?? '';
+    //     return this.animaisService.listaDoUsuario(userName);
+    //   }))
+    // );
+
+    this.acRoute.params.subscribe(params => {
+      this.animais = this.acRoute.snapshot.data['animais'];
+    });
   }
 
 }
