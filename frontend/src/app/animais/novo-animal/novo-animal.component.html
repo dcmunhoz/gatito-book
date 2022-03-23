@@ -1,0 +1,53 @@
+<!-- <div class="container">
+    <form [formGroup]="formularioAniaml" class="row" (submit)="upload()">
+        <div class="col-md-6 text-center">
+            <div class="form-group" *ngIf="!preview; else previewImage">
+                <button type="button" (click)="fileInput.click()" class="btn btn-primary" >
+                    <i class="fa fa-image fa-4x align-middle"></i>
+                </button>
+                <input #fileInput type="file" formControlName="file" accept="image/*" (change)="gravaArquivo($event.target)">
+                <app-mensagem
+                    mensagem="Por favor selecione a foto"
+                    *ngIf="!!formularioAniaml.get('file')?.getError('required')"
+                ></app-mensagem>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <textarea placeholder="descricao do animal" formControlName="description" class="form-control form-control-sm"></textarea>
+                <app-mensagem
+                    mensagem="Tamanho máximo do campo é 300 caracteres"
+                    *ngIf="!!formularioAniaml.get('description')?.getError('maxLength')"
+                ></app-mensagem>
+            </div>
+
+            <div class="form-group">
+                <label class="text-muted">
+                    Permitir comentário
+                    <input type="checkbox" formControlName="allowComments">
+                </label>
+            </div>
+
+            <div class="form-group" *ngIf="!percentualConcluido; else uploaddiv">
+                <button [disabled]="formularioAniaml.invalid" type="submit" class="btn btn-primary btn-block"> Salvar </button>
+            
+                <a [routerLink]="['animais']" class="btn btn-secondary btn-block">Cancelar</a>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+<ng-template #previewImage>
+    <app-animal
+        [url]="preview"
+        title="Preview"
+    ></app-animal>
+</ng-template>
+
+<ng-template #uploaddiv >
+    <div class="text-center display-4">
+        Percentual de upload: {{percentualConcluido}}%
+    </div>
+</ng-template> -->
